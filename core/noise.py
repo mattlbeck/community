@@ -16,6 +16,7 @@ class Actions:
         https://noise.talonvoice.com/static/previews/pop.mp3 for an
         example.
         """
+        actions.user.talon_sleep()
 
     def noise_trigger_hiss(active: bool):
         """

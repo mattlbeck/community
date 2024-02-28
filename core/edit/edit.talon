@@ -62,44 +62,44 @@ indent [more]: edit.indent_more()
 (indent less | out dent): edit.indent_less()
 
 # Delete
-clear all: user.delete_all()
-clear line: edit.delete_line()
-clear line start: user.delete_line_start()
-clear line end: user.delete_line_end()
-clear left: edit.delete()
-clear right: user.delete_right()
+(clear | junk) all: user.delete_all()
+(clear | junk) line: edit.delete_line()
+(clear | junk) line start: user.delete_line_start()
+(clear | junk) line end: user.delete_line_end()
+(clear | junk) left: edit.delete()
+(clear | junk) right: user.delete_right()
 
-clear up:
+(clear | junk) up:
     edit.extend_line_up()
     edit.delete()
 
-clear down:
+(clear | junk) down:
     edit.extend_line_down()
     edit.delete()
 
-clear word: edit.delete_word()
+(clear | junk) word: edit.delete_word()
 
-clear word left:
+(clear | junk) word left:
     edit.extend_word_left()
     edit.delete()
 
-clear word right:
+(clear | junk) word right:
     edit.extend_word_right()
     edit.delete()
 
-clear way left:
+(clear | junk) way left:
     edit.extend_line_start()
     edit.delete()
 
-clear way right:
+(clear | junk) way right:
     edit.extend_line_end()
     edit.delete()
 
-clear way up:
+(clear | junk) way up:
     edit.extend_file_start()
     edit.delete()
 
-clear way down:
+(clear | junk) way down:
     edit.extend_file_end()
     edit.delete()
 
