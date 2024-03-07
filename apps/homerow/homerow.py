@@ -5,123 +5,47 @@ mod = Module()
 
 mod.tag("homerow_search")
 
-search_again = False
-
 
 @ctx.action_class("user")
 class UserActions:
-    def homerow_search(text: str):
-        try:
-            if (
-                len(ctx.tags) > 0
-                and (focused_element := ui.focused_element())
-                and win_is_homerow_search_bar(focused_element.window)
-            ):
-                focused_element.AXValue = text.lower()
-                return
-        except ui.UIErr:
-            # focused_element.window sometimes raises a UIErr
-            # (when the Homerow search window is not visible)
-            pass
+    def homerow_search():
+        actions.key("shift-ctrl-alt-h")
+        ctx.tags = ["user.homerow_search"]
 
-        actions.key("ctrl-alt-shift-h")
-        for attempt in range(10):
-            actions.sleep("50ms")
-            try:
-                focused_element = ui.focused_element()
-                if win_is_homerow_search_bar(focused_element.window):
-                    focused_element.AXValue = text.lower()
-                    return
-            except:
-                pass
-    
-    def homerow():
-
-
-        actions.key("ctrl-alt-shift-h")
-
-
-    def homerow_pick(label: str, again: bool):
-        global search_again
-
-        search_again = again
-        actions.insert(label.lower())
+    def homerow_click(letters: str, again: bool):
+        actions.insert(letters.lower())
         actions.key("enter")
-        if not search_again:
-            complete_homerow_search()
+        if again:
+            actions.key("shift-ctrl-alt-h")
+        else:
+            ctx.tags = []
+
+    def homerow_righty():
+        actions.key("shift-enter")
+        ctx.tags = []
+
+    def homerow_info():
+        actions.key("?")
+
+    def homerow_duke():
+        actions.key("enter")
+        actions.key("enter")
+        ctx.tags = []
 
 
 @mod.action_class
 class Actions:
-    def homerow():
-        """Search in Homerow"""
-        actions.key("ctrl-alt-shift-h")
-
     def homerow_search():
-        """"""
-        try:
-            if (
-                len(ctx.tags) > 0
-                and (focused_element := ui.focused_element())
-                and win_is_homerow_search_bar(focused_element.window)
-            ):
-                focused_element.AXValue = text.lower()
-                return
-        except ui.UIErr:
-            # focused_element.window sometimes raises a UIErr
-            # (when the Homerow search window is not visible)
-            pass
+        """Search in Homerow"""
 
-        actions.key("ctrl-alt-shift-h")
-        for attempt in range(10):
-            actions.sleep("50ms")
-            try:
-                focused_element = ui.focused_element()
-                if win_is_homerow_search_bar(focused_element.window):
-                    focused_element.AXValue = text.lower()
-                    return
-            except:
-                pass
+    def homerow_click(letters: str, again: bool):
+        """Click a home row item"""
 
-    def homerow_pick(label: str, again: bool):
-        """Pick a label in Homerow, optionally continuing to search"""
-        global search_again
+    def homerow_righty():
+        """Right click a home row item"""
 
-        search_again = again
-        actions.insert(label.lower())
-        actions.key("enter")
-        if not search_again:
-            complete_homerow_search
+    def homerow_duke():
+        """Doubleclick a home row item"""
 
-
-def win_close(win):
-    if win_is_homerow_search_bar(win):
-        complete_homerow_search()
-
-
-def complete_homerow_search():
-    global search_again
-
-    ctx.tags = []
-    ui.unregister("win_close", win_close)
-    if search_again:
-        search_again = False
-        actions.user.homerow_search("")
-
-
-def win_is_homerow_search_bar(win):
-    return (
-        win.app.bundle == "com.dexterleng.Homerow" and win.title == "Homerow Search Bar"
-    )
-
-
-def win_open(win):
-    if not win_is_homerow_search_bar(win):
-        return
-    if len(ctx.tags) == 0:
-        ctx.tags = ["user.homerow_search"]
-        ui.register("win_close", win_close)
-
-
-if app.platform == "mac":
-    app.register("ready", lambda: ui.register("win_open", win_open))
+    def homerow_info():
+        """Get info on an element"""
