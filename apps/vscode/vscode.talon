@@ -283,3 +283,9 @@ cell run: user.vscode("notebook.cell.execute")
 
 install local: user.vscode("workbench.extensions.action.installVSIX")
 preview markdown: user.vscode("markdown.showPreview")
+
+# extra tab navigation
+tab move right: user.vscode("workbench.action.moveEditorToNextGroup")
+tab move left: user.vscode("workbench.action.moveEditorToPreviousGroup")
+tab focus right: user.vscode("workbench.action.focusNextGroup")
+tab focus left: user.vscode("workbench.action.focusPreviousGroup")
