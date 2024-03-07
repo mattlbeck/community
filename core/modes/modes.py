@@ -7,6 +7,7 @@ modes = {
     "debug": "a way to force debugger commands to be loaded",
     "ida": "a way to force ida commands to be loaded",
     "presentation": "a more strict form of sleep where only a more strict wake up command works",
+    "terminal": 'For manual activation of commands for terminal',
 }
 
 for key, value in modes.items():
