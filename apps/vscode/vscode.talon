@@ -15,7 +15,7 @@ please [<user.text>]:
     insert(user.text or "")
 
 # Sidebar
-bar explore: user.vscode("workbench.view.explorer")
+bar explore: user.vscode("workbench.explorer.fileView.focus")
 bar extensions: user.vscode("workbench.view.extensions")
 bar outline: user.vscode("outline.focus")
 bar run: user.vscode("workbench.view.debug")
@@ -23,6 +23,13 @@ bar search: user.vscode("workbench.view.search")
 bar source: user.vscode("workbench.view.scm")
 bar test: user.vscode("workbench.view.testing.focus")
 bar switch: user.vscode("workbench.action.toggleSidebarVisibility")
+
+explore go [<user.text>]:
+    user.vscode("workbench.explorer.fileView.focus")
+    sleep(50ms) 
+    key("cmd-f")
+    sleep(50ms)
+    insert(text or "")
 
 # Symbol search
 symbol hunt [<user.text>]:

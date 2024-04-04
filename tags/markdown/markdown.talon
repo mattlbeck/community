@@ -9,15 +9,17 @@ heading <number_small> <user.text>:
 
 
 itemize:
-    user.ensure_newline()
-    insert(" - ")
+    insert("- ")
 
 enumerate:
-    user.ensure_newline()
     insert("1. ")
+
+checkbox:
+    insert("- [ ] ")
 
 item end:
     edit.line_insert_down()
+    sleep(50ms) 
     edit.line_insert_down()
 
 link to [<user.text>]:

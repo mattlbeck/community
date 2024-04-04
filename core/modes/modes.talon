@@ -1,20 +1,9 @@
 not mode: sleep
 -
 ^dictation mode$:
-    mode.disable("sleep")
-    mode.disable("command")
-    mode.enable("dictation")
-    user.code_clear_language_mode()
-    user.gdb_disable()
-    mode.disable("user.terminal")
+    user.dictation_mode()
 ^command mode$:
-    mode.disable("sleep")
-    mode.disable("dictation")
-    mode.enable("command")
-    mode.disable("user.terminal")
+    user.command_mode()
 ^terminal mode$:
-    mode.disable("sleep")
-    mode.disable("command")
-    mode.disable("dictation")
-    mode.enable("user.terminal")
+    user.terminal_mode()
 

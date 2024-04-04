@@ -12,7 +12,7 @@ class UserActions:
     def ensure_newline():
         """insert a new line if the current line is not empty"""
         before, after = actions.user.dictation_peek(left=True, right=False)
+        print("current line: ",before)
         if before:
             actions.edit.line_insert_down()
-
-        
+            

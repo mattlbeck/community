@@ -74,3 +74,13 @@ spell that <user.formatters> <user.letters>:
 
 # Escape, type things that would otherwise be commands
 ^escape <user.text>$: user.dictation_insert(user.text)
+
+new paragraph:
+    edit.line_insert_down()
+    sleep(50ms)
+    edit.line_insert_down()
+
+brackets <user.text>$:
+    user.dictation_insert("(")
+    user.dictation_insert(user.text)
+    user.dictation_insert(")")

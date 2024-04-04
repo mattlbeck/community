@@ -7,6 +7,14 @@ zoom reset: edit.zoom_reset()
 find it: edit.find()
 next one: edit.find_next()
 
+go phrase <user.text>:
+    edit.find()
+
+    sleep(50ms)
+    insert(user.text)
+    sleep(50ms)
+    key("escape")
+
 # Navigation
 
 # The reason for these spoken forms is that "page up" and "page down" are globally defined as keys.

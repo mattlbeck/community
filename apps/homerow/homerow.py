@@ -1,4 +1,5 @@
 from talon import Context, Module, actions, app, ui
+import time
 
 ctx = Context()
 mod = Module()
@@ -11,11 +12,16 @@ class UserActions:
     def homerow_search():
         actions.key("shift-ctrl-alt-h")
         ctx.tags = ["user.homerow_search"]
+    
+    def homerow_end():
+        actions.key("escape")
+        ctx.tags = []
 
     def homerow_click(letters: str, again: bool):
         actions.insert(letters.lower())
         actions.key("enter")
         if again:
+            time.sleep(1)
             actions.key("shift-ctrl-alt-h")
         else:
             ctx.tags = []
@@ -37,6 +43,8 @@ class UserActions:
 class Actions:
     def homerow_search():
         """Search in Homerow"""
+    def homerow_end():
+        """end Homerow search"""
 
     def homerow_click(letters: str, again: bool):
         """Click a home row item"""

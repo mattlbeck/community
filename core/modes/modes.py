@@ -3,7 +3,6 @@ from talon import Module, actions, app, speech_system
 mod = Module()
 
 modes = {
-    "admin": "enable extra administration commands terminal (docker, etc)",
     "debug": "a way to force debugger commands to be loaded",
     "ida": "a way to force ida commands to be loaded",
     "presentation": "a more strict form of sleep where only a more strict wake up command works",
@@ -44,3 +43,29 @@ class Actions:
                 actions.user.engine_wake()
                 # note: this may not do anything for all versions of Dragon. Requires Pro.
                 actions.user.engine_mimic("start normal mode")
+    
+    def dictation_mode():
+        """Enable dictation mode"""
+        actions.mode.disable("sleep")
+        actions.mode.disable("command")
+        actions.mode.enable("dictation")
+        actions.user.code_clear_language_mode()
+        actions.user.gdb_disable()
+        actions.mode.disable("user.terminal")
+
+    def command_mode():
+        """Enable command mode"""
+        actions.mode.disable("sleep")
+        actions.mode.disable("dictation")
+        actions.mode.enable("command")
+        actions.mode.disable("user.terminal")
+
+    def terminal_mode():
+        """Enable terminal mode"""
+        
+        actions.mode.disable("sleep")
+        actions.mode.disable("command")
+        actions.mode.disable("dictation")
+        actions.mode.enable("user.terminal")
+            
+        

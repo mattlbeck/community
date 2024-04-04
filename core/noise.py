@@ -16,7 +16,7 @@ class Actions:
         https://noise.talonvoice.com/static/previews/pop.mp3 for an
         example.
         """
-        actions.user.talon_sleep()
+        print("I made a pop")
 
     def noise_trigger_hiss(active: bool):
         """
@@ -24,7 +24,7 @@ class Actions:
         https://noise.talonvoice.com/static/previews/hiss.mp3 for an
         example.
         """
-
+        print("I made a hiss")                
 
 def noise_trigger_hiss_debounce(active: bool):
     """Since the hiss noise triggers while you're talking we need to debounce it"""
