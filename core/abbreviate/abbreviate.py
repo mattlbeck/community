@@ -1,6 +1,6 @@
-from talon import Context, Module
+from talon import Context, Module, actions
 
-from ..user_settings import get_list_from_csv
+from ..user_settings import append_to_csv, get_list_from_csv
 
 mod = Module()
 mod.list("abbreviation", desc="Common abbreviation")
@@ -460,3 +460,14 @@ abbreviations_list_with_values = {
 
 ctx = Context()
 ctx.lists["user.abbreviation"] = abbreviations_list_with_values
+
+@mod.action_class
+class Actions:
+    def add_abbreviation(spoken_form: str):
+        """add abbreviation to abbreviation list"""
+        new_entries ={spoken_form: actions.edit.selected_text()} 
+
+        append_to_csv("abbreviations.csv",new_entries)
+        actions.app.notify(f"Added to abbreviations: {new_entries}")
+
+        

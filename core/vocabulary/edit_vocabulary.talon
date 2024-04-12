@@ -15,3 +15,6 @@ copy name to replacements as <phrase>$:
 # Automatically adds plural form by simply appending "s".
 copy noun to replacements as <phrase>$:
     user.add_selection_to_words_to_replace(phrase, "noun")
+
+add abbreviation as <phrase>$:
+    user.add_abbreviation(phrase)
