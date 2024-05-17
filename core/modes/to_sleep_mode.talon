@@ -1,5 +1,6 @@
 mode: command
 mode: dictation
+
 -
 
 # The optional <phrase> afterwards allows these to match even if you say arbitrary text
@@ -25,3 +26,4 @@ mode: dictation
 
 ^talon sleep [<phrase>]$: speech.disable()
 ^drowse [<phrase>]$: speech.disable()
+key(cmd-f1): speech.toggle()
