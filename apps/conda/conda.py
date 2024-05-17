@@ -16,3 +16,9 @@ arguments_csv_path = str(dirpath / "conda_arguments.csv")
 commands_csv_path = str(dirpath / "conda_commands.csv")
 
 
+@mod.capture(
+    rule="({user.vocabulary} | {user.punctuation} | {user.prose_snippets} | <phrase> | <user.prose_number>)+"
+)
+def environment_name(m) -> str:
+    """the name for an environment formatted with dashes"""
+    return "-".join(m.split(" "))

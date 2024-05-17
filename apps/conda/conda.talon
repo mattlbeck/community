@@ -1,8 +1,11 @@
 tag: terminal
-and tag: user.conda
+tag: user.conda
 -
 conda create:
     insert("conda env create -f environment.yml")
 
 conda update:
-    insert("conda env update -f environment.yml")
+    insert("conda update -f environment.yml")
+
+conda activate <user.environment_name>:
+    insert("conda activate " + environment_name)  
