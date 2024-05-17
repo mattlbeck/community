@@ -14,7 +14,7 @@ _file_extensions_defaults = {
     "dot see": ".c",
     "dot see sharp": ".cs",
     "dot com": ".com",
-    "dot net": ".net",
+    # "dot net": ".net",
     "dot org": ".org",
     "dot us": ".us",
     "dot U S": ".us",
@@ -51,7 +51,7 @@ _file_extensions_defaults = {
     "dot zip": ".zip",
     "dot toml": ".toml",
     "dot java": ".java",
-    "dot class": ".class",
+    # "dot class": ".class",
     "dot log": ".log",
 }
 
