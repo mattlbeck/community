@@ -19,3 +19,8 @@ copy paste:
     edit.copy()
     sleep(50ms)
     edit.paste()
+
+(clear | junk) word left: key("alt-backspace")
+(clear | junk) word right: key("alt-delete")
+go word left: key("alt-left")
+go word right: key("alt-right")
