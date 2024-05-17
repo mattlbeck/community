@@ -30,3 +30,10 @@ go line <number_small>:
     sleep(50ms)
     insert(number_small)
     key("enter")
+
+paper add:
+    key("cmd-p")
+    sleep(50ms)
+    insert("zotero create")
+    key("enter")
+
