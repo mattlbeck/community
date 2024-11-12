@@ -24,3 +24,21 @@ copy paste:
 (clear | junk) word right: key("alt-delete")
 go word left: key("alt-left")
 go word right: key("alt-right")
+
+exit: 
+    insert("exit")
+    key("enter")
+
+ors activate <user.text>: 
+    insert("aws-vault exec {text} --no-session")
+    key("enter")
+
+# command building helpers
+long flag <user.text>: insert("--{text}")
+short flag <user.letter>: insert("-{letter}")
+
+history <user.text>: 
+    key("ctrl-r")
+    insert(user.text)
+history$: 
+    key("ctrl-r")

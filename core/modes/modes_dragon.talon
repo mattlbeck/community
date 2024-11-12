@@ -26,5 +26,3 @@ speech.engine: dragon
     user.engine_sleep()
 
 ^talon sleep [<phrase>]$: speech.disable()
-^drowse [<phrase>]$: speech.disable()
-key(cmd-f1): speech.toggle()

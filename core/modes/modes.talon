@@ -6,4 +6,5 @@ not mode: sleep
     user.command_mode()
 ^terminal mode$:
     user.terminal_mode()
-
+^tab mode$:
+    user.tab_mode()

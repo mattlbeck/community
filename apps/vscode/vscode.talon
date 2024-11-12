@@ -291,6 +291,15 @@ cell next: user.vscode("notebook.focusNextEditor")
 cell last: user.vscode("notebook.focusPreviousEditor")
 cell run above: user.vscode("notebook.cell.executeCellsAbove")
 cell run: user.vscode("notebook.cell.execute")
+cell center: user.vscode("notebook.centerActiveCell")
+cell add above: user.vscode("notebook.cell.insertCodeCellAbove")
+cell add below: user.vscode("notebook.cell.insertCodeCellBelow")
+cell mark: user.vscode("notebook.cell.changeToMarkdown")
+cell code: user.vscode("notebook.cell.changeToCode")
+notebook top: user.vscode("notebook.focusTop")
+notebook bottom: user.vscode("notebook.focusBottom")
+
+
 
 install local: user.vscode("workbench.extensions.action.installVSIX")
 preview markdown: user.vscode("markdown.showPreview")

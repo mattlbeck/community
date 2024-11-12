@@ -9,6 +9,7 @@ modes = {
     "ida": "a way to force ida commands to be loaded",
     "presentation": "a more strict form of sleep where only a more strict wake up command works",
     "terminal": 'For manual activation of commands for terminal',
+    "tab": "for quickly organizing tabs in tab enabled applications"
 }
 
 for key, value in modes.items():
@@ -72,6 +73,7 @@ class Actions:
         actions.mode.disable("command")
         actions.mode.enable("dictation")
         actions.user.code_clear_language_mode()
+        actions.mode.disable("user.tab")
         actions.user.gdb_disable()
         actions.mode.disable("user.terminal")
 
@@ -80,6 +82,7 @@ class Actions:
         actions.mode.disable("sleep")
         actions.mode.disable("dictation")
         actions.mode.enable("command")
+        actions.mode.disable("user.tab")
         actions.mode.disable("user.terminal")
 
     def terminal_mode():
@@ -88,6 +91,13 @@ class Actions:
         actions.mode.disable("sleep")
         actions.mode.disable("command")
         actions.mode.disable("dictation")
+        actions.mode.disable("user.tab")
         actions.mode.enable("user.terminal")
             
-        
+    def tab_mode():
+        """Enter tab mode for organizing tab"""
+        actions.mode.disable("sleep")
+        actions.mode.disable("command")
+        actions.mode.disable("dictation")
+        actions.mode.enable("user.tab")
+            

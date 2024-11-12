@@ -1,4 +1,5 @@
-from talon import Module
+from talon import Context, Module
+import subprocess
 
 mod = Module()
 
@@ -28,3 +29,15 @@ class Actions:
 
     def terminal_kill_all():
         """kills the running command"""
+
+def get_vaults():
+    try:
+        profiles = subprocess.check_output("aws-vault list --profiles", shell=True)
+        return profiles.split("\n")
+    except subprocess.CalledProcessError as e:
+        print(e.stderr)
+        print(e.stdout)
+        return []
+    
+ctx = Context()
+ctx.lists["user.aws_vaults"] = get_vaults()
